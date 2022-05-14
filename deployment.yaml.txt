@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+
+kind: Deployment
+
+metadata:
+
+  name: image-classifier-deployment
+
+spec:
+
+  selector:
+
+    matchLabels:
+
+      app: image-classifier
+
+  replicas: 3
+
+  template:
+
+    metadata:
+
+      labels:
+
+        app: image-classifier
+
+    spec:
+
+     containers:
+
+     - name: kubermatic-dl
+
+       image: andres990127/image-classifier:latest
+
+       imagePullPolicy: Always
+
+       ports:
+
+       - containerPort: 8080
